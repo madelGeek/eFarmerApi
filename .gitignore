@@ -1,0 +1,9 @@
+# IntelliJ project files
+.idea/
+
+# Node.js stuff
+node_modules/
+
+# Bower.js stuff
+bower_components/
+

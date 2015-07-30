@@ -1,0 +1,16 @@
+<div class="padding-all">
+  <p class="taskName">{{document.taskName}}</p>
+
+  <p class="taskStartDate"> {{taskDateView}}</p>
+
+  <div class="clear"></div>
+  <div ng-repeat="action in actions">
+    <div class="task-feature-img">
+      <img ng-src="{{action.image}}" alt=""/>
+    </div>
+    <p class="task-feature">{{action.name}} <span class="property">{{action.property}} </span></p>
+    <hr/>
+  </div>
+  <p class="notes">Notes:</p>
+  <button class="add-task">Add task to eFarm Pilot</button>
+</div>

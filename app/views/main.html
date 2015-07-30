@@ -1,0 +1,18 @@
+<div class="center-block">
+  <div class="block left">
+    <p class="padding-all"><strong>Your tasks</strong></p>
+
+    <div ng-repeat="task in tasks" class="single-task"
+         ng-click="taskId(task.id, $index)"
+         ng-class="{ 'active-task': $index == selectedIndex }">
+      <img src="../images/task.png" alt=""/>
+      <span class="task-number">  My Task {{indexNumber($index)}} </span>
+    </div>
+  </div>
+  <div class="block right">
+    <div ng-if="!taskIdOnClick">
+      <h2 class="first-load-text">Please, select the task</h2>
+    </div>
+    <div task-option ng-model="taskIdOnClick" ng-if="taskIdOnClick"></div>
+  </div>
+</div>

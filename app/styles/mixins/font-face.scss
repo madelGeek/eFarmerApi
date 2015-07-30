@@ -1,0 +1,50 @@
+// Generate @font-face
+//
+// $font-base-path {String} - path to fonts directory relative to CSS location
+// $font-family {String} - font-family (w/o spaces)
+// $font-weight {Number} - font-weight
+// $font-style {String} - font-style (default: normal)
+//
+// File path & file name are based on font props which we include.
+// Examples of path mapping:
+// @include font-face("../../fonts/", "open-sans", 300); => ../../fonts/open-sans/300/open-sans-300.*
+// @include font-face("../../fonts/", "open-sans", 400, "italic"); => ../../fonts/open-sans/400-italic/open-sans-400-italic.*
+
+
+@mixin font-face($font-base-path, $font-family, $font-weight, $font-style: "normal") {
+
+  // Normalize parameters
+  $font-base-path: unquote($font-base-path);
+  $font-family: to_lower_case(unquote($font-family));
+  $font-style: unquote($font-style);
+
+  // Generate path & name
+  $file-style: unquote(if($font-style == normal, "", "-#{$font-style}"));
+  $file-path: "#{$font-base-path}#{$font-family}/#{$font-weight}#{$file-style}";
+  $file-name: "#{$font-family}-#{$font-weight}#{$file-style}";
+
+  // Generate @font-face
+  @font-face {
+    font-family: $font-family;
+    src: url('#{$file-path}/#{$file-name}.eot');
+    src: url('#{$file-path}/#{$file-name}.eot?#iefix') format('embedded-opentype'),
+    url('#{$file-path}/#{$file-name}.woff') format('woff'),
+    url('#{$file-path}/#{$file-name}.ttf') format('truetype'),
+    url('#{$file-path}/#{$file-name}.svg##{$font-family}') format('svg');
+
+    font-weight: $font-weight;
+    font-style: $font-style;
+  }
+}
+
+// Common weight name mapping
+//
+// 100 - Thin
+// 200 - Extra Light (Ultra Light)
+// 300 - Light
+// 400 - Normal
+// 500 - Medium
+// 600 - Semi Bold (Demi Bold)
+// 700 - Bold
+// 800 - Extra Bold (Ultra Bold)
+// 900 - Black (Heavy)
