@@ -7,5 +7,10 @@ Test task for eFarmer
 ```
 npm install
 ```
+next run
+
+```
+grunt serve
+```
 
 
