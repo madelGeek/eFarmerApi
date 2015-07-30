@@ -20,7 +20,7 @@ p {
 }
 
 .center-block {
-  margin: 200px auto;
+  margin: 200px auto 0;
   display: block;
   position: absolute;
   left: 0;
@@ -147,26 +147,6 @@ hr {
   background-color: #f5f5f5;
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-  .header {
-    margin-bottom: 30px;
-  }
-  .jumbotron {
-    border-bottom: 0;
-  }
-
-
-}
 
 @media (max-width: 768px) {
 
